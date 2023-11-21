@@ -24,6 +24,26 @@ export const buscarAllVorazes = (req, res) => {
         vorazes = VorazesList.getVorazes();
     }
 
+    const { nome } = req.query
+    if(nome){
+        vorazes = VorazesList.getVorazesById(nome);
+        return res.status(200).send({
+            tipo: vorazes.length, vorazes
+        });
+    }else{
+        vorazes = VorazesList.getVorazes();
+    }
+
+    const { profissao } = req.query
+    if(profissao){
+        vorazes = VorazesList.getVorazesById(profissao);
+        return res.status(200).send({
+            tipo: vorazes.length, vorazes
+        });
+    }else{
+        vorazes = VorazesList.getVorazes();
+    }
+
     const voraze = VorazesList.getVorazes();
     if (voraze) {
         return res.status(200).send(
@@ -49,8 +69,8 @@ export const buscarVorazesId = (req, res) => {
 };
 
 export const criarVorazes = (req, res) => {
-    const { nome, idade, distrito, genero, dano,defesa, descricao, imagem } = req.body
-    const voraze = new vorazes(nome, idade, distrito, genero, dano,defesa, descricao, imagem);
+    const {nome, idade, distrito, genero, profissao, dano, defesa, descricao, imagem} = req.body
+    const voraze = new vorazes(nome, idade, distrito, genero, profissao, dano, defesa, descricao, imagem);
     let error = "dados inválidos:"
     let contador = 0;
 
@@ -101,9 +121,9 @@ export const criarVorazes = (req, res) => {
 
 export const editarVorazes = (req, res) => {
     const { id } = req.params
-    const {  nome, idade, distrito, genero, dano,defesa, descricao, imagem  } = req.body
+    const {  nome, idade, distrito, genero, profissao, dano, defesa, descricao, imagem } = req.body
 
-    const voraze = VorazesList.updateVorazes(id, nome, idade, distrito, genero, dano,defesa, descricao, imagem);
+    const voraze = VorazesList.updateVorazes(id, nome, idade, distrito, genero, profissao, dano, defesa, descricao, imagem);
 
     if (!voraze) {
         return res.status(400).send({
@@ -111,7 +131,7 @@ export const editarVorazes = (req, res) => {
             origem: "controller"
         })
     }
-    VorazesList.getVorazesById(id, nome, idade, distrito, genero, dano,defesa, descricao, imagem );
+    VorazesList.getVorazesById(id, nome, idade, distrito, genero, profissao, dano, defesa, descricao, imagem);
     return res.status(200).send(voraze)
 }
 

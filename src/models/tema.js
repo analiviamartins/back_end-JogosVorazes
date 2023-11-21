@@ -1,12 +1,13 @@
 import { v4 as uuidv4 } from "uuid";
 
 export class vorazes{
-    constructor(nome, idade, distrito, genero, dano, defesa, descricao, imagem){
+    constructor(nome, idade, distrito, genero, profissao, dano, defesa, descricao, imagem){
         this.id= uuidv4();
         this.nome= nome;
         this.idade= idade;
         this.distrito= distrito;
         this.genero= genero;
+        this.profissao= profissao
         this.dano= dano;
         this.defesa= defesa;
         this.descricao= descricao ;
