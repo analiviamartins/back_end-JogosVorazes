@@ -1,7 +1,9 @@
 import { Integrantes } from "../models/equipe.js";
+import membros  from "../data/equipe.js";
 import { IntegrantesLista } from "../models/equipeList.js";
 
 const integrantesLista = new IntegrantesLista();
+membros.forEach((integrante) => integrantesLista.addIntegrante(new Integrantes(integrante.nome, integrante.idade, integrante.email, integrante.hobby, integrante.img)));
 
 function verificarImg(img) {
     if (img.match(/\.(jpeg|jpg|gif|png)$/) != null) {
