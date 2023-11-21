@@ -1,6 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
 
-
 export class Integrantes {
     constructor(nome, idade, email, hobby, img) {
         this.id = uuidv4();

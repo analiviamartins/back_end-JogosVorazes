@@ -29,16 +29,16 @@ export class IntegrantesLista {
         if (!integrante) {
             return null;
         }
-            integrante.nome = nome;
-            integrante.idade = idade;
-            integrante.email = email;
-            integrante.hobby = hobby;
-            integrante.img = img;
-        
-            return integrante;
+        integrante.nome = nome;
+        integrante.idade = idade;
+        integrante.email = email;
+        integrante.hobby = hobby;
+        integrante.img = img;
+
+        return integrante;
     }
 
     createIntegrante(integrantes) {
         this.integrantes.push(integrantes);
-}
+    }
 }

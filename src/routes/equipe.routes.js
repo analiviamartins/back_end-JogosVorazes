@@ -4,7 +4,7 @@ import {
     deleteEquipeById,
     getAllEquipe,
     getEquipeById,
-    updateEquipeById } from "../controllers/equipe.controllers";
+    updateEquipeById } from "../controllers/equipe.controllers.js";
 
 const rotasIntegrantes = Router();
 
@@ -17,3 +17,5 @@ rotasIntegrantes.post("/", createEquipe)
 rotasIntegrantes.put("/:id", updateEquipeById)
 
 rotasIntegrantes.delete("/:id", deleteEquipeById)
+
+export default rotasIntegrantes;
