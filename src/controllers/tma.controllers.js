@@ -112,9 +112,9 @@ export const criarVorazes = (req, res) => {
         contador++
     }
 
-    // Verifica se o distrito tem menos de 30 caracteres
-    if (distrito.length > 30 || distrito == "") {
-        error += "O distrito deve ter menos de 30 linhas"
+    // Verifica se o distrito tem menos de 15 caracteres
+    if (distrito.length > 15 || distrito == "") {
+        error += "O distrito deve ter menos de 15 caracteres"
         contador++
     }
 
@@ -136,9 +136,9 @@ export const criarVorazes = (req, res) => {
         contador++
     }
 
-    // Verifica se a descrição tem entre 10 e 500 caracteres
-    if (descricao < 10 || descricao > 500) {
-        error += "Descrição deve conter no mínimo 10 e no máximo 500 caracteres"
+    // Verifica se a descrição tem entre 10 e 300 caracteres
+    if (descricao < 10 || descricao > 300) {
+        error += "Descrição deve conter no mínimo 10 e no máximo 300 caracteres"
     }
     
     // Verifica se a imagem é um link válido
