@@ -1,3 +1,4 @@
+//array de objetos. Cada objeto representa um personagem da trilogia Jogos Vorazes.
 const personagens = [
     {
         nome: 'Katniss Everdeen',
