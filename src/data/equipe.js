@@ -1,3 +1,5 @@
+// define um array de objetos chamado membros.
+//Cada objeto representa um membro, com propriedades para nome, idade, email, hobby e imagem.
 const membros = [
     {
         nome: "Ana Lívia",
