@@ -23,6 +23,11 @@ export class vorazesList{
     getVorazesName(nome){
       return this.personagens.filter((personagem) => personagem.nome.toLowerCase() === nome.toLowerCase() )
     }
+
+    // Retorna uma lista de personagens que possuem uma profissão específico
+    getVorazesName(profissao){
+      return this.personagens.filter((personagem) => personagem.profissao.toLowerCase() === profissao.toLowerCase() )
+    }
   
     // Retorna um personagem específico com base no seu id
     getVorazesById(id) {
