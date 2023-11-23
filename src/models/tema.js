@@ -15,17 +15,10 @@ export class vorazes{
         this.dano= dano;
         this.defesa= defesa;
         this.descricao= descricao ;
-        this.imagem = this.url_valid(imagem);
+        this.imagem = imagem;
     }
     // Atribuindo os métodos da classe
     geradorId() {
        return uuidv4();
-    }
-    url_valid(imagem){
-        if(imagem.match(/\.(jpeg|jpg|gif|png)$/) !=null){
-            return "imagem válida"
-        }else{
-            return "imagem inválida"
-        }
     }
 }

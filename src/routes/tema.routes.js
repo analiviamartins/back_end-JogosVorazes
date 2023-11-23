@@ -1,4 +1,5 @@
 //importa o módulo Router e as funções de controle para o tema;
+import {Router} from "express"
 import {
     buscarAllVorazes,
     buscarVorazesId,
