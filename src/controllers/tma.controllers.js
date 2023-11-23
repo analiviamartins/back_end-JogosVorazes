@@ -6,7 +6,7 @@ import { vorazesList } from "../models/temaList.js"
 //instância da classe
 const VorazesList = new vorazesList();
 //Laço de repetição para manter os membros criados
-personagens.forEach((peronagem) => VorazesList.addVorazes(new vorazes(peronagem.nome, peronagem.idade, peronagem.distrito, peronagem.genero, peronagem.dano, peronagem.defesa, peronagem.descricao, peronagem.imagem)));
+personagens.forEach((peronagem) => {VorazesList.addVorazes(new vorazes(peronagem.nome, peronagem.idade, peronagem.distrito, peronagem.genero, peronagem.profissao, peronagem.dano, peronagem.defesa, peronagem.descricao, peronagem.imagem))});
 
 //validação de imagem
 function url_valid(imagem) {
