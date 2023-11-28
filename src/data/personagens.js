@@ -298,17 +298,6 @@ const personagens = [
         imagem: 'https://www.proibidoler.com/wp-content/uploads/2014/09/The-Hunger-Games-Mockingjay-Part-1-Boggs-570x570.jpg',
     },
     {
-        nome: 'Annie Cresta',
-        idade: 22,
-        distrito: 'Distrito 4',
-        genero: 'Feminino',
-        profissao: 'Mentor',
-        dano: 20,
-        defesa: 25,
-        descricao: 'Annie Cresta Odair  é uma vencedora do Distrito 4. Annie é conhecida por ganhar a 70ª edição dos Jogos Vorazes. Ela é a esposa do falecido Finnick Odair e mãe de seu filho',
-        imagem: 'https://pm1.aminoapps.com/7854/dac36f5cec80f9bd75ced8cd20cce77b9707e096r1-600-600v2_00.jpg',
-    },
-    {
         nome: 'Buttercup',
         idade: 4,
         distrito: 'Distrito 12',
