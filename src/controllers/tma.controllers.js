@@ -1,12 +1,14 @@
 //importando as classes
 import { vorazes } from "../models/tema.js"
 import personagens  from "../data/personagens.js";
-import { vorazesList } from "../models/temaList.js"
+import { VorazesList } from "../models/temaList.js"
 
 //instância da classe
-const VorazesList = new vorazesList();
+const vorazesList = new VorazesList();
 //Laço de repetição para manter os membros criados
-personagens.forEach((peronagem) => {VorazesList.addVorazes(new vorazes(peronagem.nome, peronagem.idade, peronagem.distrito, peronagem.genero, peronagem.profissao, peronagem.dano, peronagem.defesa, peronagem.descricao, peronagem.imagem))});
+personagens.forEach((peronagem) => {
+    vorazesList.addVorazes(new vorazes(peronagem.nome, peronagem.idade, peronagem.distrito, peronagem.genero, peronagem.profissao, peronagem.dano, peronagem.defesa, peronagem.descricao, peronagem.imagem))
+});
 
 //validação de imagem
 function url_valid(imagem) {
@@ -21,50 +23,50 @@ function url_valid(imagem) {
 export const buscarAllVorazes = (req, res) => {
 
     // Inicializa a variável vorazes com a lista de todos personagens
-    let vorazes = VorazesList.getVorazes();
+    let vorazes = vorazesList.getVorazes();
 
     // Se 'distrito' for fornecido, busca pelo distrito de cada personagem e retorna o resultado
     const { distrito } = req.query
     if(distrito){
-        vorazes = VorazesList.getVorazesById(distrito);
+        vorazes = vorazesList.getVorazesById(distrito);
         return res.status(200).send({
             tipo: vorazes.length, vorazes
         });
     }else{
         // Se 'distrito' não for fornecido, busca por todos os personagens
-        vorazes = VorazesList.getVorazes();
+        vorazes = vorazesList.getVorazes();
     }
 
     // Se 'nome' for fornecido, busca pelo nome de cada personagem e retorna o resultado
     const { nome } = req.query
     if(nome){
-        vorazes = VorazesList.getVorazesById(nome);
+        vorazes = vorazesList.getVorazesById(nome);
         return res.status(200).send({
             tipo: vorazes.length, vorazes
         });
     }else{
         // Se 'nome' não for fornecido, busca por todos os personagens
-        vorazes = VorazesList.getVorazes();
+        vorazes = vorazesList.getVorazes();
     }
 
     // Se 'profissão' for fornecido, busca pela profissão de cada personagem e retorna o resultado
     const { profissao } = req.query
     if(profissao){
-        vorazes = VorazesList.getVorazesById(profissao);
+        vorazes = vorazesList.getVorazesById(profissao);
         return res.status(200).send({
             tipo: vorazes.length, vorazes
         });
     }else{
         // Se 'profissão' não for fornecido, busca por todos os personagens
-        vorazes = VorazesList.getVorazes();
+        vorazes = vorazesList.getVorazes();
     }
 
     // Se houver Vorazes, retorna a lista de Vorazes e a quantidade de Vorazes
-    const voraze = VorazesList.getVorazes();
+    const voraze = vorazesList.getVorazes();
     if (voraze) {
         return res.status(200).send(
             {
-                message: `o número de personagens cadastrados é ${VorazesList.contador()}`,
+                message: `o número de personagens cadastrados é ${vorazesList.contador()}`,
                 voraze
             }
         );
@@ -79,7 +81,7 @@ export const buscarAllVorazes = (req, res) => {
 export const buscarVorazesId = (req, res) => {
     const { id } = req.params;
    // Busca o Vorazes com o ID especificado
-    const vorazes = VorazesList.getVorazesById(id);
+    const vorazes = vorazesList.getVorazesById(id);
 
     // Verifica se o Vorazes foi encontrado
     if (!vorazes) {
@@ -152,7 +154,7 @@ export const criarVorazes = (req, res) => {
 
     // Se não houver erros, adiciona a Voraze à lista e envia uma resposta de sucesso
     if (contador == 0) {
-        VorazesList.addVorazes(voraze)
+        vorazesList.addVorazes(voraze)
         res.status(201).send(voraze)
     } else {
         // Se houver erros, envia uma resposta de erro com a mensagem de erro
@@ -172,8 +174,8 @@ export const editarVorazes = (req, res) => {
     // Desestrutura o objeto 'req.body' para obter os detalhes do personagem
     const {  nome, idade, distrito, genero, profissao, dano, defesa, descricao, imagem } = req.body
 
-    // Chama a função 'updateVorazes' da lista 'VorazesList' para atualizar os detalhes do personagem
-    const voraze = VorazesList.updateVorazes(id, nome, idade, distrito, genero, profissao, dano, defesa, descricao, imagem);
+    // Chama a função 'updateVorazes' da lista 'vorazesList' para atualizar os detalhes do personagem
+    const voraze = vorazesList.updateVorazes(id, nome, idade, distrito, genero, profissao, dano, defesa, descricao, imagem);
 
     // Se a função 'updateVorazes' retornar 'null' ou 'undefined', significa que o personagem não foi encontrado
     if (!voraze) {
@@ -184,7 +186,7 @@ export const editarVorazes = (req, res) => {
     }
 
     // Chama a função 'getVorazesById' para obter os detalhes atualizados do personagem
-    VorazesList.getVorazesById(id, nome, idade, distrito, genero, profissao, dano, defesa, descricao, imagem);
+    vorazesList.getVorazesById(id, nome, idade, distrito, genero, profissao, dano, defesa, descricao, imagem);
     // Retorna uma resposta com status 200 e os detalhes atualizados do personagem
     return res.status(200).send(voraze)
 }
@@ -193,8 +195,8 @@ export const editarVorazes = (req, res) => {
 export const deletarVorazes= (req, res) => {
     const { id } = req.params
 
-    // Buscando o item na lista VorazesList usando o ID
-    const voraze = VorazesList.getVorazesById(id);
+    // Buscando o item na lista vorazesList usando o ID
+    const voraze = vorazesList.getVorazesById(id);
 
     // Verificando se o item existe
     if (!voraze) {
@@ -204,7 +206,7 @@ export const deletarVorazes= (req, res) => {
         })
     }
      // Se o item existir, deletá-lo da lista
-    VorazesList.deleteVorazes(id);
+    vorazesList.deleteVorazes(id);
 
     // Retornar uma resposta com status 200 e o item deletado
     return res.status(200).send(voraze)

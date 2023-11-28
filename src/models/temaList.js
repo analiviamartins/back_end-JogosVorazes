@@ -1,4 +1,4 @@
-export class vorazesList{
+export class VorazesList{
     constructor() {
       // Construtor da classe, inicializa o array personagens como vazio
       this.personagens = [];
@@ -25,7 +25,7 @@ export class vorazesList{
     }
 
     // Retorna uma lista de personagens que possuem uma profissão específico
-    getVorazesName(profissao){
+    getVorazesProfi(profissao){
       return this.personagens.filter((personagem) => personagem.profissao.toLowerCase() === profissao.toLowerCase() )
     }
   
