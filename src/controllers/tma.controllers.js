@@ -111,12 +111,10 @@ export const criarVorazes = (req, res) => {
         contador++
     }
 
-    // Verifica se a idade é um número inteiro positivo
-    if (idade === "" || typeof(idade) !== 'number' || idade <= 0 || Number.isInteger(idade) === false) {
-        error += " A idade está errada"
-        contador++
+    if (idade < 0 || idade > 100) {
+        error += "Idade não permitida";
+        errorCount++;
     }
-
     // Verifica se o distrito tem menos de 15 caracteres
     if (distrito.length > 15 || distrito == "") {
         error += "O distrito deve ter menos de 15 caracteres"
