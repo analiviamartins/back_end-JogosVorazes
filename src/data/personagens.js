@@ -9,7 +9,7 @@ const personagens = [
         dano: 100,
         defesa: 100,
         descricao: 'Katniss Everdeen é a personagem principal e a narradora da trilogia Jogos Vorazes. Depois que sua irmã mais nova, Prim, foi selecionada para participar dos 74º Jogos Vorazes, Katniss se voluntariou para pegar seu lugar como a tributo feminina do Distrito 12.',
-        imagem: 'https://i.pinimg.com/736x/2c/cd/8a/2ccd8aee9198942e50aaac8b674f726f.jpg',
+        imagem: 'https://i.pinimg.com/originals/27/2c/dc/272cdca9112bfdd251065ecc55ae74f7.jpg',
     },
     {
         nome: 'Peeta Mellark',

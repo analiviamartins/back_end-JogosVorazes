@@ -63,7 +63,7 @@ export const buscarAllVorazes = (req, res) => {
 
     // Se houver Vorazes, retorna a lista de Vorazes e a quantidade de Vorazes
     const voraze = vorazesList.getVorazes();
-    if (voraze) {
+    if (voraze.length) {
         return res.status(200).send(
             {
                 message: `o número de personagens cadastrados é ${vorazesList.contador()}`,
@@ -80,6 +80,7 @@ export const buscarAllVorazes = (req, res) => {
 // Função que busca um Vorazes pelo ID
 export const buscarVorazesId = (req, res) => {
     const { id } = req.params;
+    console.log('get:', id);
    // Busca o Vorazes com o ID especificado
     const vorazes = vorazesList.getVorazesById(id);
 
@@ -111,10 +112,12 @@ export const criarVorazes = (req, res) => {
         contador++
     }
 
-    if (idade < 0 || idade > 100) {
-        error += "Idade não permitida";
-        errorCount++;
-    }
+    if (idade < 0) {
+        error += "A idade não pode ser negativa";
+      } else if (!Number.isInteger(idade)) {
+        error += "A idade deve ser um número inteiro";
+      } 
+
     // Verifica se o distrito tem menos de 15 caracteres
     if (distrito.length > 15 || distrito == "") {
         error += "O distrito deve ter menos de 15 caracteres"
@@ -167,13 +170,14 @@ export const criarVorazes = (req, res) => {
 export const editarVorazes = (req, res) => {
 
     // Desestrutura o objeto 'req.params' para obter o 'id' do personagem
-    const { id } = req.params
+    const { id } = req.params;
+    console.log('put:', id);
 
     // Desestrutura o objeto 'req.body' para obter os detalhes do personagem
     const {  nome, idade, distrito, genero, profissao, dano, defesa, descricao, imagem } = req.body
 
     // Chama a função 'updateVorazes' da lista 'vorazesList' para atualizar os detalhes do personagem
-    const voraze = vorazesList.updateVorazes(id, nome, idade, distrito, genero, profissao, dano, defesa, descricao, imagem);
+    const voraze = vorazesList.getVorazesById(id, nome, idade, distrito, genero, profissao, dano, defesa, descricao, imagem);
 
     // Se a função 'updateVorazes' retornar 'null' ou 'undefined', significa que o personagem não foi encontrado
     if (!voraze) {
@@ -184,14 +188,15 @@ export const editarVorazes = (req, res) => {
     }
 
     // Chama a função 'getVorazesById' para obter os detalhes atualizados do personagem
-    vorazesList.getVorazesById(id, nome, idade, distrito, genero, profissao, dano, defesa, descricao, imagem);
+    vorazesList.updateVorazes(id, nome, idade, distrito, genero, profissao, dano, defesa, descricao, imagem);
     // Retorna uma resposta com status 200 e os detalhes atualizados do personagem
     return res.status(200).send(voraze)
 }
 
 // Exportando a função que deleta os personagens
 export const deletarVorazes= (req, res) => {
-    const { id } = req.params
+    const { id } = req.params;
+    console.log('delete:', id);
 
     // Buscando o item na lista vorazesList usando o ID
     const voraze = vorazesList.getVorazesById(id);

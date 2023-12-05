@@ -17,5 +17,4 @@ rotasVorazes.get("/:id", buscarVorazesId)
 rotasVorazes.post("/", criarVorazes)
 rotasVorazes.put("/:id", editarVorazes)
 rotasVorazes.delete("/:id", deletarVorazes)
-
 export default rotasVorazes;
