@@ -31,7 +31,7 @@ const personagens = [
         dano: 85,
         defesa: 95,
         descricao: 'Gale Hawthorne é o melhor amigo de Katniss e parceiro de caça, um dos personagens mais importantes da série. Ele é muito devotado à sua família e à Katniss e é forçado a assistir quando ela se voluntaria para o 74º Jogos Vorazes no lugar de sua irmã e finge um romance como Peeta Mellark para se manter viva.',
-        imagem: 'https://i.pinimg.com/564x/83/00/45/830045872e6954ceb861dbc7a6c9f013.jpg',
+        imagem: 'https://i.pinimg.com/originals/8a/e6/1a/8ae61aaae2c31a057fa37bc33a9861fa.jpg',
     },
     {
         nome: 'Haymitch Abernathy',
@@ -211,7 +211,7 @@ const personagens = [
     },
     {
         nome: 'Brutus',
-        idade: 15,
+        idade: 40,
         distrito: 'Distrito 2',
         genero: 'Masculino',
         profissao: 'Tributo',
