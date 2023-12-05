@@ -38,7 +38,7 @@ const personagens = [
         idade: 42,
         distrito: 'distrito 12',
         genero: 'Masculino',
-        profissao: 'Mnetor',
+        profissao: 'Mentor',
         dano: 70,
         defesa: 80,
         descricao: 'Haymitch Abernathy era o único sobrevivente dos Jogos Vorazes do distrito 12, tendo sobrevivido a 50º edição dos Jogos Vorazes, segundo Massacre Quaternário, antes de Katniss Everdeen e Peeta Mellark vencerem o 74º Jogos Vorazes sobre a sua orientação.',
