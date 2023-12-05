@@ -40,7 +40,7 @@ export class VorazesList{
     }
   
     // Atualiza as informações de um personagem existente
-    updateVorazes(id, nome, idade, distrito, genero, dano, defesa, descricao, imagem) {
+    updateVorazes(nome, idade, distrito, genero, dano, defesa, descricao, imagem, id) {
       const personagem = this.getVorazesById(id);
   
       // Se o personagem não existe, retorna null
