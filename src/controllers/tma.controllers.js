@@ -171,26 +171,27 @@ export const editarVorazes = (req, res) => {
 
     // Desestrutura o objeto 'req.params' para obter o 'id' do personagem
     const { id } = req.params;
-    console.log('put:', id);
 
     // Desestrutura o objeto 'req.body' para obter os detalhes do personagem
-    const {  nome, idade, distrito, genero, profissao, dano, defesa, descricao, imagem } = req.body
+    const { nome, idade, distrito, genero, profissao, dano, defesa, descricao, imagem} = req.body;
 
-    // Chama a função 'updateVorazes' da lista 'vorazesList' para atualizar os detalhes do personagem
-    const voraze = vorazesList.getVorazesById(id, nome, idade, distrito, genero, profissao, dano, defesa, descricao, imagem);
-
-    // Se a função 'updateVorazes' retornar 'null' ou 'undefined', significa que o personagem não foi encontrado
-    if (!voraze) {
-        return res.status(400).send({
-            message: "Personagem não encontrado",
-            origem: "controller"
-        })
+    // Verifica se todos os campos necessários estão presentes
+    if (!nome || !idade || !distrito || !genero || !profissao || !dano || !defesa ||!descricao ||!imagem) {
+        return res.status(400).send({ message: "Dados inválidos!", status: "Bad Request" });
     }
 
-    // Chama a função 'getVorazesById' para obter os detalhes atualizados do personagem
+    // Tenta atualizar o membro da equipe com os novos detalhes
+    const voraze = vorazesList.getVorazesById(id, nome, idade, distrito, genero, profissao, dano, defesa, descricao, imagem);
+
+    // Se o membro da equipe não puder ser encontrado, retorna um erro 404
+    if (!voraze) {
+        return res.status(404).send({ message: `Integrante com id ${id} não encontrado!`, status: "Not Fould" });
+    }
+
     vorazesList.updateVorazes(id, nome, idade, distrito, genero, profissao, dano, defesa, descricao, imagem);
-    // Retorna uma resposta com status 200 e os detalhes atualizados do personagem
-    return res.status(200).send(voraze)
+
+    // Se tudo correr bem, retorna uma mensagem de sucesso e os detalhes atualizados do membro da equipe
+    return res.status(200).send({ message: `Integrante com id ${id} atualizado com sucesso!`, voraze: voraze, status: "OK" });
 }
 
 // Exportando a função que deleta os personagens
