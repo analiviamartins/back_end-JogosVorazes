@@ -17,8 +17,4 @@ export class vorazes{
         this.descricao= descricao ;
         this.imagem = imagem;
     }
-    // Atribuindo os métodos da classe
-    geradorId() {
-       return uuidv4();
-    }
 }

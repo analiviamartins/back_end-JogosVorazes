@@ -1,4 +1,5 @@
 // Importando a função uuidv4 do pacote 'uuid'
+// Importando a função uuidv4 do pacote 'uuid'
 import { v4 as uuidv4 } from 'uuid';
 
 // Definindo a classe 'Integrantes'
