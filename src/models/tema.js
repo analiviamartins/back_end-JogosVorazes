@@ -16,5 +16,5 @@ export class vorazes{
         this.defesa= defesa;
         this.descricao= descricao ;
         this.imagem = imagem;
-    }
+    }    
 }

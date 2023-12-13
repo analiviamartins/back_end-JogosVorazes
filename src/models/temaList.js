@@ -5,7 +5,14 @@ export class VorazesList{
     }
   
     // Retorna a lista completa de personagens
-    getVorazes() {
+    getVorazes(dados) {
+
+      const { nome, distrito, profissao} = dados;
+
+      if(nome || distrito || profissao){
+        return this.getNomeDistritoProfissao( nome, distrito, profissao);
+      }
+
       return this.personagens;
     }
 
@@ -64,5 +71,30 @@ export class VorazesList{
     // Remove um personagem da lista com base no seu id
     deleteVorazes(id) {
       this.personagens = this.personagens.filter((personagem) => personagem.id !== id);
+    }
+
+    getNomeDistritoProfissao(nome, distrito, profissao){
+    
+      if(nome){
+        nome = nome.toLowerCase();
+      }
+      if(distrito){
+        distrito = distrito.toLowerCase();
+      }
+      if(profissao){
+        profissao = profissao.toLowerCase();
+      }
+
+      //filtro composto.
+      const filtro = this.personagens.filter((personagem)=>{
+        const nomeCondicao = nome === undefined || personagem.nome.toLowerCase().includes(nome);
+        const distritoCondicao = distrito === undefined || personagem.distrito.toLowerCase().includes(distrito);
+        const profissaoCondicao = profissao === undefined || personagem.profissao.toLowerCase().includes(profissao);
+        //outros igual aqui
+        //mais de um coloca &&
+        return nomeCondicao && distritoCondicao && profissaoCondicao;
+      });
+
+      return filtro;
     }
   }

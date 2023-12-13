@@ -21,60 +21,22 @@ function url_valid(imagem) {
 
 //Exporta uma função que pega todos os personagens
 export const buscarAllVorazes = (req, res) => {
+    const { nome, distrito, profissao } = req.query;
 
-    // Inicializa a variável vorazes com a lista de todos personagens
-    let vorazes = vorazesList.getVorazes();
-
-    // Se 'distrito' for fornecido, busca pelo distrito de cada personagem e retorna o resultado
-    const { distrito } = req.query
-    if(distrito){
-        vorazes = vorazesList.getVorazesById(distrito);
-        return res.status(200).send({
-            tipo: vorazes.length, vorazes
-        });
-    }else{
-        // Se 'distrito' não for fornecido, busca por todos os personagens
-        vorazes = vorazesList.getVorazes();
+    const dados = {
+        nome,
+        distrito,
+        profissao
     }
 
-    // Se 'nome' for fornecido, busca pelo nome de cada personagem e retorna o resultado
-    const { nome } = req.query
-    if(nome){
-        vorazes = vorazesList.getVorazesById(nome);
-        return res.status(200).send({
-            tipo: vorazes.length, vorazes
-        });
-    }else{
-        // Se 'nome' não for fornecido, busca por todos os personagens
-        vorazes = vorazesList.getVorazes();
-    }
+    const array = vorazesList.getVorazes(dados);
 
-    // Se 'profissão' for fornecido, busca pela profissão de cada personagem e retorna o resultado
-    const { profissao } = req.query
-    if(profissao){
-        vorazes = vorazesList.getVorazesById(profissao);
-        return res.status(200).send({
-            tipo: vorazes.length, vorazes
-        });
-    }else{
-        // Se 'profissão' não for fornecido, busca por todos os personagens
-        vorazes = vorazesList.getVorazes();
-    }
 
-    // Se houver Vorazes, retorna a lista de Vorazes e a quantidade de Vorazes
-    const voraze = vorazesList.getVorazes();
-    if (voraze.length) {
-        return res.status(200).send(
-            {
-                message: `o número de personagens cadastrados é ${vorazesList.contador()}`,
-                voraze
-            }
-        );
-    }
-    // Se não houver Vorazes, retorna uma mensagem indicando que não há personagens cadastrados
-    return res.status(200).json({
-        message: "Nenhum personagen cadastrado"
-    });
+    return res.status(200).send({
+        total: array.length,
+        vorazes: array
+    })
+
 };
 
 // Função que busca um Vorazes pelo ID

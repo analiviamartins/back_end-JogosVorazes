@@ -393,7 +393,7 @@ const personagens = [
         profissao: 'Diretora',
         dano: 70,
         defesa: 60,
-        descricao: 'Ela é uma diretora residente da Capital que se juntou à rebelião junto com sua equipe de filmagem,',
+        descricao: 'Ela é uma diretora residente da Capital que se juntou à rebelião junto com sua equipe de filmagem.',
         imagem: 'https://pbs.twimg.com/media/F-r8hRNXwAA-6zA.jpg',
     },
 ];
