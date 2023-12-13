@@ -6,7 +6,7 @@ const membros = [
         idade: 16, 
         email: "alsouzamartins@gmail.com",
         hobby: "Dançar",
-        img: "/analivia.jpg",
+        img: "/analivia2.jpg",
     },
     {
         nome: "Lívia Mota",
@@ -34,14 +34,14 @@ const membros = [
         idade: 16,
         email: "richard.siqueira@aluno.senai.br", 
         hobby: "Pescar",
-        img: "/richard.jpg",
+        img: "/richard2.jpg",
     },
     {
         nome: "Sophia Marcondes",
         idade: 17,
         email: "sophiamarcondes@aluno.senai.br",
-        hobby: "Focada em voltar com o ex",
-        img: "/soso.jpg",
+        hobby: "Ler",
+        img: "/soso2.jpg",
     },
 ];
 
